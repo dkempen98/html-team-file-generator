@@ -1,35 +1,21 @@
-// I am prompted to enter the engineer’s name, ID, email, and GitHub username
+// Add the engineer’s name, ID, email, and GitHub username tp the html
 
-const inquirer = require("inquirer")
+function engineerInfo({name, id, email, gitUser}, file) {
+    file += `<div class="card" style="width: 18rem;">
+    <div class="card-body bg-dark text-light">
+        <h2 class="card-title">${name}</h2>
+        <h6 class="card-subtitle mb-2">Engineer</h6>
+        <ul>
+            <li>Employee ID: ${id}</li>
+            <li>Employee Email: <a href="mailto: ${email}" target="_blank">${email}</a></li>
+            <li>GitHub Profile: <a href="https://github.com/${gitUser}" target="_blank">${gitUser}</a></li>
+        </ul>
+    </div>
+</div>`
 
-function engineerInfo() {
-    console.log('Please fill out information for your engineer.');
+console.log(file);
 
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "Please enter the engineer's name",
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: "Please enter the engineer's employee ID",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "Please enter the engineer's email address",
-        },
-        {
-            type: 'input',
-            name: 'gitUser',
-            message: "Please enter the engineer's GitHub username",
-        },
-    ])
-    .then((data) => {
-        console.log(data);
-    })
+return file
 }
 
 module.exports = {engineerInfo};

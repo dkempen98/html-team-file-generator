@@ -10,9 +10,8 @@ function managerInfo({name, id, email, office}, file) {
         <h6 class="card-subtitle mb-2">Manager</h6>
         <ul>
             <li>Employee ID: ${id}</li>
-            <li>Employee Email: <a href="${email}" target="_blank">${email}</li>
+            <li>Employee Email: <a href="mailto: ${email}" target="_blank">${email}</a></li>
             <li>Office Number: ${office}</li>
-            <li><a href="https://www.google.com/" target="_blank">link item</a></li>
         </ul>
     </div>
 </div>`

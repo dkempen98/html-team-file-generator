@@ -27,7 +27,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const manager = require('./manager')
 const engineer = require('./engineer')
-const intern = require('./intern')
+const intern = require('./intern');
 
 var fileText = `<!DOCTYPE html>
 <html lang="en">
@@ -86,14 +86,94 @@ function addMember() {
     .then((data) => {
         console.log(data);
         if (data.memberType === engineer) {
-            console.log('ENGINEER');
+            addEngineer();
         } else if (data.memberType === intern) {
-            console.log('INTERN');
+            addIntern();
         } else if (data.memberType === complete) {
-            console.log('DONE');
+            doneAdding();
         } else {
             console.log('ERROR: Invalid Option Selected');
         }
     })
 }
 
+function addIntern () {
+    console.log('Please fill out information for your intern.');
+
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter the intern's name",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Please enter the intern's employee ID",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter the intern's email address",
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "Please enter the intern's school",
+        }
+    ])
+    .then((data) => {
+        fileText = intern.internInfo(data, fileText)
+        addMember()
+    })
+}
+
+function addEngineer() {
+    console.log('Please fill out information for your engineer.');
+
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter the engineer's name",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Please enter the engineer's employee ID",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter the engineer's email address",
+        },
+        {
+            type: 'input',
+            name: 'gitUser',
+            message: "Please enter the engineer's GitHub username",
+        },
+    ])
+    .then((data) => {
+        fileText = engineer.engineerInfo(data, fileText)
+        addMember()
+    })
+}
+
+function doneAdding () {
+    fileText += `</section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>`
+
+    createFile()
+}
+
+function createFile() {
+    fs.writeFile("index.html", fileText, (err) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log('HTML File Created Successfully');
+        }
+    })
+}

@@ -1,35 +1,21 @@
-// I am prompted to enter the intern’s name, ID, email, and school
+// Add intern’s name, ID, email, and school to html
 
-const inquirer = require("inquirer")
+function internInfo({name, id, email, school}, file) {
+    file += `<div class="card" style="width: 18rem;">
+    <div class="card-body bg-dark text-light">
+        <h2 class="card-title">${name}</h2>
+        <h6 class="card-subtitle mb-2">Intern</h6>
+        <ul>
+            <li>Employee ID: ${id}</li>
+            <li>Employee Email: <a href="mailto: ${email}" target="_blank">${email}</a></li>
+            <li>School: ${school}</li>
+        </ul>
+    </div>
+</div>`
 
-function internInfo() {
-    console.log('Please fill out information for your intern.');
+console.log(file);
 
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "Please enter the intern's name",
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: "Please enter the intern's employee ID",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "Please enter the intern's email address",
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: "Please enter the intern's school",
-        },
-    ])
-    .then((data) => {
-        console.log(data);
-    })
+return file
 }
 
 module.exports = {internInfo};

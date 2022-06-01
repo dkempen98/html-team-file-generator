@@ -4,10 +4,10 @@
   "description": "JS command line project that allows you to create a simple team roster html page by answering a series of questions",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "jest"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
