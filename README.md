@@ -20,6 +20,7 @@ Whenever you want to create a file, run 'node index.js' in the terminal to trigg
 ## Credits
 
 Inquirer for the questions - https://www.npmjs.com/package/inquirer#examples
+
 Jest for the testing - https://www.npmjs.com/package/jest
 
 ## License
