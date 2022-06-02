@@ -14,6 +14,9 @@ Clone the repo or download all of the files, run 'npm install' to ensure the pro
 
 Whenever you want to create a file, run 'node index.js' in the terminal to trigger the series of questions that will determine the content. If you want to create multiple files, be sure to either re-name them or move them to separate folders or they will be overwritten each time a file is generated.
 
+<img width="458" alt="image" src="https://user-images.githubusercontent.com/25507661/171545449-05ff85f4-8faa-47c4-8443-c26502ae9f6b.png">
+
+
 ## Credits
 
 Inquirer for the questions - https://www.npmjs.com/package/inquirer#examples
